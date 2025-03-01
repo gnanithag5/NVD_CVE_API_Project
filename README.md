@@ -67,28 +67,7 @@ cd cve-visualizer
 
 ## Project Structure
 
-NVD_CVE_API_Project/
-│── app2.py                # Main Flask application to integrate the frontend
-│── fetch_CVE_data.py      # Fetches CVE data from NVD API
-│── full_syn.py            # Synchronizes data periodically
-│── api_fetch.py           # API for filtering CVEs
-│── database.py            # DB connection logic
-│── mysql_code.sql         # Defines database schema
-│── requirements.txt       # Dependencies for the project
-│
-├── templates/             # HTML templates
-│   ├── cve_list.html      # Displays CVE list in a table
-│   ├── cve_detail.html    # Shows details of a selected CVE
-│
-├── tests/                 # Contains unit tests
-│   ├── unit_tests.py      # Unit tests for API & database
-│
-├── .pytest_cache/
-    ├── CACHEDIR.TAG
-    ├── .gitignore             # Specifies files to ignore in Git
-    ├── README.md              # Project overview & instructions
-    ├── venv/
-    ├── v/
+NVD_CVE_API_Project/ │── app2.py # Main Flask application to integrate the frontend │── fetch_CVE_data.py # Fetches CVE data from NVD API │── full_syn.py # Synchronizes data periodically │── api_fetch.py # API for filtering CVEs │── database.py # DB connection logic │── mysql_code.sql # Defines database schema │── requirements.txt # Dependencies for the project │ ├── templates/ # HTML templates │ ├── cve_list.html # Displays CVE list in a table │ ├── cve_detail.html # Shows details of a selected CVE │ ├── tests/ # Contains unit tests │ └── unit_tests.py # Unit tests for API & database │ ├── .pytest_cache/ ├── CACHEDIR.TAG ├── .gitignore # Specifies files to ignore in Git ├── README.md # Project overview & instructions ├── venv/ # Virtual environment directory └── v/ # Placeholder or temporary files
 
 ## CVE API Documentation
 
