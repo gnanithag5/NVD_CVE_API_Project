@@ -15,7 +15,7 @@ This project is a **Python-based system** that fetches **CVE (Common Vulnerabili
 
 ---
 
-## 🛠 Technology Stack
+### 🛠 Technology Stack
 - **Backend:** Python, Flask 
 - **Database:** MySQL
 - **Frontend:** HTML
@@ -24,7 +24,7 @@ This project is a **Python-based system** that fetches **CVE (Common Vulnerabili
 
 ---
 
-## 🚀 Steps to Implement
+### 🚀 Steps to Implement
 
 ### **1️⃣ Fetch and Store CVE Data in a Database**
 - Use **requests** to fetch CVE data from the **NVD API**.
@@ -92,25 +92,26 @@ Returns all stored CVEs.
 ---
 
 ## 2️⃣ Get CVE by ID
-**GET** `/api/cve/id?cve_id=CVE-2023-1234`  
+(http://127.0.0.1:5000/api/cve/id?cve_id=CVE-2023-1234 (Replace CVE-2023-1234 with an actual CVE ID from your database)) 
 Returns details of a specific CVE.
 
 ---
 
 ## 3️⃣ Get CVEs by Year
-**GET** `/api/cve/year?year=2023`  
+(http://127.0.0.1:5000/api/cve/year?year=2023 (Replace 2023 with a year from your database)
+) 
 Returns CVEs from a specific year.
 
 ---
 
 ## 4️⃣ Get CVEs by Score
-**GET** `/api/cve/score?score=7.0`  
+http://127.0.0.1:5000/api/cve/score?score=7.0 (Replace 7.0 with a score from your database) 
 Filters CVEs with a **CVSS base score** above a threshold.
 
 ---
 
 ## 5️⃣ Get Recently Modified CVEs
-**GET** `/api/cve/modified?days=30`  
+http://127.0.0.1:5000/api/cve/modified?days=30 (This will return CVEs modified in the last 30 days)
 Fetches CVEs modified in the last **N** days.
 
 
