@@ -7,8 +7,8 @@ This project is a **Python-based system** that fetches **CVE (Common Vulnerabili
 
 ## Features
 ✅ Fetch CVE data from the **NVD API**  
-✅ Store data in **MySQL** or **MongoDB**  
-✅ Periodic data sync using **Celery**  
+✅ Store data in **MySQL** 
+✅ Periodic data sync 
 ✅ Backend API for CVE queries  
 ✅ Web-based **UI** for filtering and visualization  
 ✅ **Pagination, sorting, and search functionality**  
@@ -16,9 +16,9 @@ This project is a **Python-based system** that fetches **CVE (Common Vulnerabili
 ---
 
 ## 🛠 Technology Stack
-- **Backend:** Python, Flask, Celery (for periodic tasks)  
-- **Database:** MySQL / PostgreSQL / MongoDB  
-- **Frontend:** HTML, CSS, JavaScript (Fetch API for AJAX)  
+- **Backend:** Python, Flask 
+- **Database:** MySQL
+- **Frontend:** HTML
 - **Testing:** Pytest, Unittest  
 - **Deployment:** Docker (Optional)  
 
@@ -29,12 +29,11 @@ This project is a **Python-based system** that fetches **CVE (Common Vulnerabili
 ### **1️⃣ Fetch and Store CVE Data in a Database**
 - Use **requests** to fetch CVE data from the **NVD API**.
 - Implement **pagination** (`startIndex` and `resultsPerPage`) to retrieve all records.
-- Store data in **MySQL** or **MongoDB**.
+- Store data in **MySQL**.
 - Ensure **data cleansing and deduplication**.
 
 ### **2️⃣ Implement Periodic Data Sync**
-- Use **Celery with Redis** or a **cron job** for periodic updates.
-- Perform **full or incremental refresh** based on the last modified date.
+- Perform **full refresh**
 
 ### **3️⃣ Develop a Flask Backend with Filtering APIs**
 Expose REST APIs for querying CVE details based on:
@@ -43,7 +42,7 @@ Expose REST APIs for querying CVE details based on:
 - **CVE Score** → `/cves/score/{min_score}/{max_score}`
 - **Last Modified** → `/cves/last-modified/{days}`
 
-### **4️⃣ Build the UI with HTML, CSS, and JavaScript**
+### **4️⃣ Build the UI with HTML**
 - Use **Flask** to serve templates.
 - Display CVE data in an **HTML table with AJAX**.
 - Implement:
@@ -54,7 +53,6 @@ Expose REST APIs for querying CVE details based on:
 ### **5️⃣ Documentation & Testing**
 - **API Documentation:** Auto-generated with Swagger.
 - **Unit Tests:** Using `pytest`.
-- **Security:** Validate inputs & prevent SQL injection.
 
 ---
 
@@ -64,10 +62,6 @@ Expose REST APIs for querying CVE details based on:
 
 git clone https://github.com/gnanithag5/NVD_CVE_API_Project
 cd cve-visualizer
-
-## Project Structure
-
-NVD_CVE_API_Project/ │── app2.py # Main Flask application to integrate the frontend │── fetch_CVE_data.py # Fetches CVE data from NVD API │── full_syn.py # Synchronizes data periodically │── api_fetch.py # API for filtering CVEs │── database.py # DB connection logic │── mysql_code.sql # Defines database schema │── requirements.txt # Dependencies for the project │ ├── templates/ # HTML templates │ ├── cve_list.html # Displays CVE list in a table │ ├── cve_detail.html # Shows details of a selected CVE │ ├── tests/ # Contains unit tests │ └── unit_tests.py # Unit tests for API & database │ ├── .pytest_cache/ ├── CACHEDIR.TAG ├── .gitignore # Specifies files to ignore in Git ├── README.md # Project overview & instructions ├── venv/ # Virtual environment directory └── v/ # Placeholder or temporary files
 
 ## CVE API Documentation
 
