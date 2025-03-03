@@ -1,0 +1,21 @@
+# .gitignore
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
+venv/
+.venv/
+.virtualenvs/
+
+# Configuration files
+*.env
+
+# OS generated files
+.DS_Store
+
+# Log files or other temporary files
+*.log
+*.tmp
