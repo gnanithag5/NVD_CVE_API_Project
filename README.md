@@ -5,7 +5,7 @@
 ## Overview
 This project is a **Python-based system** that fetches **CVE (Common Vulnerabilities and Exposures) data** from the **NVD API**, stores it in a **database**, and provides a **web-based UI** for users to query and visualize the data. Refer to the report for the detailed explanation and results
 
-## Features
+### Features
 ✅ Fetch CVE data from the **NVD API**  
 ✅ Store data in **MySQL** 
 ✅ Periodic data sync 
@@ -24,125 +24,78 @@ This project is a **Python-based system** that fetches **CVE (Common Vulnerabili
 
 ---
 
-### 🚀 Steps to Implement
+### Setup
 
-### **1️⃣ Fetch and Store CVE Data in a Database**
-- Use **requests** to fetch CVE data from the **NVD API**.
-- Implement **pagination** (`startIndex` and `resultsPerPage`) to retrieve all records.
-- Store data in **MySQL**.
-- Ensure **data cleansing and deduplication**.
+1.  **Clone the repository:**
+    ```bash
+    git clone <repository_url>
+    cd cve_project
+    ```
+2.  **Create a virtual environment (recommended):**
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Linux/macOS
+    venv\Scripts\activate     # On Windows
+    ```
+3.  **Install dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+4.  **Configure the database:**
+    * Create a MySQL database and update `config.py` with your database credentials (DB\_HOST, DB\_USER, DB\_PASSWORD, DB\_NAME).
+    * Execute the `mysql_code.sql` script to create the database schema.
+5.  **Run the application:**
+    ```bash
+    python main.py --all
+    ```
 
-### **2️⃣ Implement Periodic Data Sync**
-- Perform **full refresh**
+### Functionality
 
-### **3️⃣ Develop a Flask Backend with Filtering APIs**
-Expose REST APIs for querying CVE details based on:
-- **CVE ID** → `/cves/{cve_id}`
-- **Year** → `/cves/year/{year}`
-- **CVE Score** → `/cves/score/{min_score}/{max_score}`
-- **Last Modified** → `/cves/last-modified/{days}`
+* **Data Fetching:** Fetches CVE data from the NVD API and stores it in a MySQL database.
+* **Database Management:** Manages the MySQL database, including data cleaning and validation.
+* **API:** Provides API endpoints to access CVE data.
+* **Web UI:** A basic web interface to display and search CVE data.
+* **Unit Tests:** Tests to ensure functionality.
+* **Centralized Execution:** A `main.py` script to orchestrate execution.
 
-### **4️⃣ Build the UI with HTML**
-- Use **Flask** to serve templates.
-- Display CVE data in an **HTML table with AJAX**.
-- Implement:
-  - ✅ **Pagination**
-  - ✅ **Sorting (Date column)**
-  - ✅ **Clickable rows to view CVE details**
+### API Endpoints
 
-### **5️⃣ Documentation & Testing**
-- **API Documentation:** Auto-generated with Swagger.
-- **Unit Tests:** Using `pytest`.
+* **Get CVE by ID:** `http://127.0.0.1:5000/api/cve/id?cve_id=CVE-XXXX-YYYY`
+* **Get CVEs by Year:** `http://127.0.0.1:5000/api/cve/year?year=YYYY`
+* **Get CVEs by Score:** `http://127.0.0.1:5000/api/cve/score?score=X.X`
+* **Get Recently Modified CVEs:** `http://127.0.0.1:5000/api/cve/modified?days=N`
 
----
+### Web UI
 
-## 📌 Installation & Setup
+* **CVE List:** `http://127.0.0.1:5000/cves/list?page=1&resultsPerPage=10`
+    * Allows pagination and searching.
+    * Displays CVE details when clicked.
 
-### **1️⃣ Clone the Repository**
+### Execution
 
-git clone https://github.com/gnanithag5/NVD_CVE_API_Project
-cd cve-visualizer
+* Run `python main.py --all` to execute all scripts in order: database setup, data fetching, API server, web UI server, and unit tests.
 
-## CVE API Documentation
+### Configuration
 
-## Available Endpoints
+* Edit `config.py` to adjust database credentials, API URL, results per page, logging level, and log file path.
 
-### 1. Get all CVEs
-**GET** `/api/cves`
-Returns a list of all CVEs stored in the database.
+### Troubleshooting
 
-### 2. Get CVE by ID
-**GET** `/api/cves/{cve_id}`
-Returns details of a specific CVE.
+**MySQL Connection Errors:**
 
-### 3. Get CVEs by Year
-**GET** `/api/cves?year=2023`
-Filters CVEs based on the year.
+* Verify database credentials in `config.py`.
+* Confirm the MySQL server is running.
 
-### 4. Get CVEs by Score
-**GET** `/api/cves?min_score=7.0`
-Filters CVEs with a score above a threshold.
+**API Issues:**
 
-## 🔗 Available API Endpoints
+* Ensure all dependencies are installed (`pip list`).
+* Verify the Flask API (`api_fetch.py`) is running.
 
-## 1️⃣ Get All CVEs
-**GET** `/api/cves`  
-Returns all stored CVEs.
+## Future Work
 
----
+* **Incremental Synchronization:** Implement incremental CVE data updates instead of full synchronizations to improve efficiency and reduce data fetching time. This would involve tracking the last updated CVE and only fetching changes since that point.
+* **Periodic Synchronization:** Explore and implement periodic full synchronizations using third-party scheduling modules to ensure data integrity and catch any missed updates.
 
-## 2️⃣ Get CVE by ID
-(http://127.0.0.1:5000/api/cve/id?cve_id=CVE-2023-1234 (Replace CVE-2023-1234 with an actual CVE ID from your database)) 
-Returns details of a specific CVE.
+## License
 
----
-
-## 3️⃣ Get CVEs by Year
-(http://127.0.0.1:5000/api/cve/year?year=2023 (Replace 2023 with a year from your database)
-) 
-Returns CVEs from a specific year.
-
----
-
-## 4️⃣ Get CVEs by Score
-http://127.0.0.1:5000/api/cve/score?score=7.0 (Replace 7.0 with a score from your database) 
-Filters CVEs with a **CVSS base score** above a threshold.
-
----
-
-## 5️⃣ Get Recently Modified CVEs
-http://127.0.0.1:5000/api/cve/modified?days=30 (This will return CVEs modified in the last 30 days)
-Fetches CVEs modified in the last **N** days.
-
-
-## Setup Guide
-
-### 1. Install Dependencies from requirements.txt
-### 2. Connect Mysql using database.py with the sql schema available in mysql_code.sql
-### 3. Run fetch_CVE_data.py for fetching data
-### 4. Run full_sync.py for synchronizing the data
-### 5. Run api_fetch.py for filtering
-### 6. Run app2.py for UI
-### 7. Run unit_tests.py for testing
-
-# 🛠 Technologies Used  
-- **Python (Flask)**  
-- **MySQL** (pymysql, mysql-connector)  
-- **HTML (Jinja templates)**  
-
----
-
-## ❗ Troubleshooting  
-
-## 1️⃣ MySQL connection errors?  
-- Check `database.py` for correct credentials.  
-- Ensure MySQL server is running.  
-
-## 2️⃣ API not running?  
-- Check dependencies with `pip list`.  
-- Ensure Flask is installed and `api_fetch.py` is executed.  
-
----
-
-## 📄 License  
-This project is open-source under the **MIT License**.  
+This project is licensed under the MIT License.  
