@@ -2,8 +2,8 @@
 
 # Database configuration
 DB_HOST = "localhost"  
-DB_USER = "root"
-DB_PASSWORD = "Nani@2001"
+DB_USER = "clandestine"
+DB_PASSWORD = "mystic_blue"
 DB_NAME = "cve_database"
 
 # API configuration
