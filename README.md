@@ -96,6 +96,3 @@ This project is a **Python-based system** that fetches **CVE (Common Vulnerabili
 * **Incremental Synchronization:** Implement incremental CVE data updates instead of full synchronizations to improve efficiency and reduce data fetching time. This would involve tracking the last updated CVE and only fetching changes since that point.
 * **Periodic Synchronization:** Explore and implement periodic full synchronizations using third-party scheduling modules to ensure data integrity and catch any missed updates.
 
-## License
-
-This project is licensed under the MIT License.  
