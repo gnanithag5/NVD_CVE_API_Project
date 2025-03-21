@@ -55,7 +55,8 @@ This project is a **Python-based system** that fetches **CVE (Common Vulnerabili
 ### API Endpoints
 
 * **Get CVE Filter Data Web UI:** `http://127.0.0.1:5000/`
-* To get foltered data separately use the following endpoints.
+
+To get filtered data separately use the following endpoints.
 * **Get CVE by ID:** `http://127.0.0.1:5000/api/cve/id?cve_id=CVE-XXXX-YYYY`
 * **Get CVEs by Year:** `http://127.0.0.1:5000/api/cve/year?year=YYYY`
 * **Get CVEs by Score:** `http://127.0.0.1:5000/api/cve/score?score=X.X`
