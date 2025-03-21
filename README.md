@@ -31,20 +31,14 @@ This project is a **Python-based system** that fetches **CVE (Common Vulnerabili
     git clone <repository_url>
     cd cve_project
     ```
-2.  **Create a virtual environment (recommended):**
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Linux/macOS
-    venv\Scripts\activate     # On Windows
-    ```
-3.  **Install dependencies:**
+2.  **Install dependencies:**
     ```bash
     pip install -r requirements.txt
     ```
-4.  **Configure the database:**
+3.  **Configure the database:**
     * Create a MySQL database and update `config.py` with your database credentials (DB\_HOST, DB\_USER, DB\_PASSWORD, DB\_NAME).
     * Execute the `mysql_code.sql` script to create the database schema.
-5.  **Run the application:**
+4.  **Run the application:**
     ```bash
     python main.py --all
     ```
@@ -60,6 +54,8 @@ This project is a **Python-based system** that fetches **CVE (Common Vulnerabili
 
 ### API Endpoints
 
+* **Get CVE Filter Data Web UI:** `http://127.0.0.1:5000/`
+* To get foltered data separately use the following endpoints.
 * **Get CVE by ID:** `http://127.0.0.1:5000/api/cve/id?cve_id=CVE-XXXX-YYYY`
 * **Get CVEs by Year:** `http://127.0.0.1:5000/api/cve/year?year=YYYY`
 * **Get CVEs by Score:** `http://127.0.0.1:5000/api/cve/score?score=X.X`
